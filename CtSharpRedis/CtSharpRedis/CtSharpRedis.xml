@@ -1,0 +1,1515 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CtSharpRedis</name>
+    </assembly>
+    <members>
+        <member name="T:CtSharpRedis.CtRedisEvent">
+            <summary>
+            日志事件
+            </summary>
+        </member>
+        <member name="M:CtSharpRedis.CtSharpRedisValue.ConvertToStringArrary(CtSharpRedis.CtSharpRedisValue[])">
+            <summary>
+            转字符串数组
+            </summary>
+            <param name="ctSharpRedisValues"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.CtSharpRedisValue.ConvertToRedisValueArrary(System.String[])">
+            <summary>
+            转CtSharpRedisValue数组
+            </summary>
+            <param name="stringValues"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.CtSharpRedisValue.SerializeRedisValue``1(``0)">
+            <summary>
+            序列化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.CtSharpRedisValue.DeserializeRedisValue``1(CtSharpRedis.CtSharpRedisValue)">
+            <summary>
+            反序列化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="redisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.CtSharpRedisValue.DeserializeRedisValue``1(System.String)">
+            <summary>
+            反序列化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="redisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CtSharpRedis.Enums.CtSharpRedisAggregate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CtSharpRedis.Exceptions.CtSharpRedisException">
+            <summary>
+            redis异常
+            </summary>
+        </member>
+        <member name="E:CtSharpRedis.IAbstractRedisClient.CtRedisEventNotify">
+            <summary>
+            日志通知事件
+            </summary>
+        </member>
+        <member name="P:CtSharpRedis.IAbstractRedisClient.IsConnected">
+            <summary>
+            连接状态
+            </summary>
+        </member>
+        <member name="M:CtSharpRedis.IAbstractRedisClient.Connect(System.String)">
+            <summary>
+            连接
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IAbstractRedisClient.Publish(System.String,System.Object)">
+            <summary>
+            发布
+            </summary>
+            <param name="channelName"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IAbstractRedisClient.Subscribe(System.String,System.Action{System.String,System.String})">
+            <summary>
+            订阅
+            </summary>
+            <param name="channelName"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:CtSharpRedis.IAbstractRedisClient.GetDatabase(System.Int32)">
+            <summary>
+            获取DB
+            </summary>
+            <param name="dbIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CtSharpRedis.IHashesCommands">
+            <summary>
+                哈希操作
+            </summary>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashDelete(System.String,CtSharpRedis.CtSharpRedisValue)">
+            <summary>
+            删除一个hash的field
+            </summary>
+            <param name="key"></param>
+            <param name="field"></param>
+            <remarks>
+            https://redis.io/commands/hdel
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashDelete(System.String,CtSharpRedis.CtSharpRedisValue[])">
+            <summary>
+            删除多个hash的field
+            </summary>
+            <param name="key"></param>
+            <param name="fields"></param>
+            <remarks>
+            https://redis.io/commands/hdel
+            </remarks>
+            <returns>返回从哈希集中成功移除的域的数量</returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashExists(System.String,CtSharpRedis.CtSharpRedisValue)">
+            <summary>
+            判断field是否存在于hash中
+            </summary>
+            <param name="key"></param>
+            <param name="field"></param>
+            <remarks>
+            https://redis.io/commands/hexists
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashGet``1(System.String,CtSharpRedis.CtSharpRedisValue)">
+             <summary>
+             获取指定的hash集中指定字段的值
+             </summary>
+             <param name="key"></param>
+             <param name="field"></param>
+             <remarks>
+            https://redis.io/commands/hget
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashGet(System.String,CtSharpRedis.CtSharpRedisValue[])">
+             <summary>
+             获取指定的hash集中指定字段的值
+             </summary>
+             <param name="key"></param>
+             <param name="fields"></param>
+             <remarks>
+            https://redis.io/commands/hmget
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashGetAll(System.String)">
+            <summary>
+            从hash中读取全部的域和值
+            </summary>
+            <param name="key"></param>
+            <remarks>
+            https://redis.io/commands/hgetall
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashIncrement(System.String,CtSharpRedis.CtSharpRedisValue,System.Int64)">
+             <summary>
+             将hash中指定域的值增加给定的数字
+             </summary>
+             <param name="key"></param>
+             <param name="field"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/hincrby
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashIncrement(System.String,CtSharpRedis.CtSharpRedisValue,System.Double)">
+             <summary>
+             将hash中指定域的值增加给定的浮点数
+             </summary>
+             <param name="key"></param>
+             <param name="field"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/hincrbyfloat
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashDecrement(System.String,CtSharpRedis.CtSharpRedisValue,System.Int64)">
+             <summary>
+             将hash中指定域的值增加给定的数字
+             </summary>
+             <param name="key"></param>
+             <param name="field"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/hincrby
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashDecrement(System.String,CtSharpRedis.CtSharpRedisValue,System.Double)">
+             <summary>
+             将hash中指定域的值增加给定的浮点数
+             </summary>
+             <param name="key"></param>
+             <param name="field"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/hincrbyfloat
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashKeys(System.String)">
+            <summary>
+            获取hash的所有字段
+            </summary>
+            <param name="key"></param>
+            <remarks>
+            https://redis.io/commands/hkeys
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashSet``1(System.String,CtSharpRedis.CtSharpRedisValue,``0,CtSharpRedis.Enums.CtSharpWhen)">
+             <summary>
+             设置hash里面一个字段的值
+             </summary>
+             <param name="key"></param>
+             <param name="field"></param>
+             <param name="value"></param>
+             <param name="when"></param>
+             <remarks>
+            when = CtSharpWhen.Always:https://redis.io/commands/hset
+             when = CtSharpWhen.NotExists:https://redis.io/commands/hsetnx
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashSet(System.String,System.Collections.Generic.KeyValuePair{CtSharpRedis.CtSharpRedisValue,CtSharpRedis.CtSharpRedisValue}[])">
+             <summary>
+             设置hash里面多个field的值
+             </summary>
+             <param name="key"></param>
+             <param name="fieldValues"></param>
+             <remarks>
+            https://redis.io/commands/hmset
+             </remarks>
+        </member>
+        <member name="M:CtSharpRedis.IHashesCommands.HashLength(System.String)">
+             <summary>
+             获取hash里所有字段的数量
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/hlen
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHyperLogLogCommands.HyperLogLogAdd``1(System.String,``0)">
+             <summary>
+             HyperLogLog添加
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/pfadd
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHyperLogLogCommands.HyperLogLogAdd(System.String,CtSharpRedis.CtSharpRedisValue[])">
+             <summary>
+             HyperLogLog添加
+             </summary>
+             <param name="key"></param>
+             <param name="values"></param>
+             <remarks>
+            https://redis.io/commands/pfadd
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHyperLogLogCommands.HyperLogLogLength(System.String)">
+             <summary>
+             HyperLogLog长度计算
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/pfcount
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHyperLogLogCommands.HyperLogLogLength(System.String[])">
+             <summary>
+             HyperLogLog长度计算
+             </summary>
+             <param name="keys"></param>
+             <remarks>
+            https://redis.io/commands/pfcount
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IHyperLogLogCommands.HyperLogLogMerge(System.String,System.String,System.String)">
+             <summary>
+             HyperLogLog合并
+             </summary>
+             <param name="destinationKey"></param>
+             <param name="firstKey"></param>
+             <param name="secondKey"></param>
+             <remarks>
+            https://redis.io/commands/pfmerge
+             </remarks>
+        </member>
+        <member name="M:CtSharpRedis.IHyperLogLogCommands.HyperLogLogMerge(System.String,System.String[])">
+             <summary>
+             HyperLogLog合并
+             </summary>
+             <param name="destinationKey"></param>
+            <param name="mergeKeys"></param>
+            <remarks>
+            https://redis.io/commands/pfmerge
+             </remarks>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyIdleTime(System.String)">
+             <summary>
+             返回指定key对应的value自被存储之后空闲的时间，以秒为单位(
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/object
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyTimeToLive(System.String)">
+             <summary>
+             返回key剩余的过期时间
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/ttl
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyDelete(System.String)">
+             <summary>
+             删除指定的一批keys，如果删除中的某些key不存在，则直接忽略
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/del
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyDelete(System.String[])">
+             <summary>
+             删除指定的一批keys，如果删除中的某些key不存在，则直接忽略
+             </summary>
+             <param name="keys"></param>
+             <remarks>
+            https://redis.io/commands/del
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyDump(System.String)">
+             <summary>
+             序列化给定 key ，并返回被序列化的值
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/dump
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyExists(System.String)">
+             <summary>
+             返回key是否存在
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/exists
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyExpire(System.String,System.TimeSpan)">
+             <summary>
+             设置key的过期时间，超过时间后，将会自动删除该key
+             </summary>
+             <param name="key"></param>
+             <param name="expire"></param>
+             <remarks>
+            https://redis.io/commands/expire
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyExpire(System.String,System.DateTime)">
+             <summary>
+             设置key的过期时间，超过时间后，将会自动删除该key
+             </summary>
+             <param name="key"></param>
+             <param name="expire"></param>
+             <remarks>
+            https://redis.io/commands/expireat
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyRename(System.String,System.String,CtSharpRedis.Enums.CtSharpWhen)">
+             <summary>
+             将key重命名为newkey，如果key与newkey相同，将返回一个错误
+             </summary>
+             <param name="key"></param>
+             <param name="newKey"></param>
+            <param name="when"></param>
+            <remarks>
+            https://redis.io/commands/rename
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyPersist(System.String)">
+             <summary>
+             移除给定key的生存时间
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/persist
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IKeysCommand.KeyMove(System.String,System.Int32)">
+             <summary>
+             将当前数据库的 key 移动到给定的数据库 db 当中
+             </summary>
+             <param name="key"></param>
+             <param name="destinationDbIndex"></param>
+             <remarks>
+            https://redis.io/commands/move
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListGetByIndex``1(System.String,System.Int64)">
+             <summary>
+             获取一个元素，通过其索引列表
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <param name="index"></param>
+             <remarks>
+            https://redis.io/commands/lindex
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListInsertAfter``2(System.String,``0,``1)">
+             <summary>
+             在列表中的另一个元素之后插入一个元素
+             </summary>
+             <param name="key"></param>
+             <param name="pivot"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/linsert
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListInsertBefore``2(System.String,``0,``0)">
+             <summary>
+             在列表中的另一个元素之前插入一个元素
+             </summary>
+             <param name="key"></param>
+             <param name="pivot"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/linsert
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListLength(System.String)">
+             <summary>
+             获得队列(List)的长度
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/llen
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListLeftPop``1(System.String)">
+             <summary>
+             从队列的左边出队一个元素
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/lpop
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListLeftPush``1(System.String,``0,CtSharpRedis.Enums.CtSharpWhen)">
+             <summary>
+             从队列的左边入队一个元素
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+            <param name="when"></param>
+            <remarks>
+            when = CtSharpWhen.Alway:https://redis.io/commands/lpush
+            when = CtSharpWhen.Exists:https://redis.io/commands/lpushx
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListLeftPush(System.String,CtSharpRedis.CtSharpRedisValue[])">
+            <summary>
+            从队列的左边入队多个元素
+            </summary>
+            <param name="key"></param>
+            <param name="values"></param>
+            <remarks>
+            https://redis.io/commands/lpush
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListRange(System.String,System.Int64,System.Int64)">
+             <summary>
+             从列表中获取指定返回的元素
+             </summary>
+             <param name="key"></param>
+             <param name="startIndex"></param>
+             <param name="stopIndex"></param>
+             <remarks>
+            https://redis.io/commands/lrange
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListRemove``1(System.String,``0,System.Int64)">
+             <summary>
+             从列表中删除元素
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <param name="count"></param>
+             <remarks>
+            https://redis.io/commands/lrem
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListSetByIndex``1(System.String,System.Int64,``0)">
+             <summary>
+             设置队列里面一个元素的值
+             </summary>
+             <param name="key"></param>
+             <param name="index"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/lset
+             </remarks>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListTrim(System.String,System.Int64,System.Int64)">
+             <summary>
+             修剪到指定范围内的清单
+             </summary>
+             <param name="key"></param>
+             <param name="startIndex"></param>
+             <param name="stopIndex"></param>
+             <remarks>
+            https://redis.io/commands/ltrim
+             </remarks>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListRightPop``1(System.String)">
+             <summary>
+             
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/rpop
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListRightPopLeftPush``1(System.String,System.String)">
+             <summary>
+             删除列表中的最后一个元素，将其追加到另一个列表
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <param name="destinationKey"></param>
+             <remarks>
+            https://redis.io/commands/rpoplpush
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListRightPush``1(System.String,``0,CtSharpRedis.Enums.CtSharpWhen)">
+            <summary>
+            从队列的右边入队一个元素
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="when"></param>
+            <remarks>
+            when = CtSharpWhen.Alway:https://redis.io/commands/rpush
+            when = CtSharpWhen.Exists:https://redis.io/commands/rpushx
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IListsCommands.ListRightPush(System.String,CtSharpRedis.CtSharpRedisValue[])">
+            <summary>
+            从队列的右边入队多个元素
+            </summary>
+            <param name="key"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IRedisManager.Connect(System.String,System.Action{CtSharpRedis.CtRedisEvent})">
+            <summary>
+            连接
+            </summary>
+            <param name="connectionString"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CtSharpRedis.IRedisValueSerializeSettings">
+            <summary>
+            序列化工具
+            </summary>
+        </member>
+        <member name="M:CtSharpRedis.IRedisValueSerializeSettings.SerializeRedisValue(System.Object)">
+            <summary>
+            序列化
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IRedisValueSerializeSettings.DeserializeRedisValue``1(System.String)">
+            <summary>
+            反序列化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetAdd``1(System.String,``0)">
+             <summary>
+             添加一个元素到集合(set)里
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            http://www.redis.io/commands/sadd
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetAdd(System.String,CtSharpRedis.CtSharpRedisValue[])">
+             <summary>
+             添加多个元素到集合(set)里
+             </summary>
+             <param name="key"></param>
+             <param name="values"></param>
+             <remarks>
+            http://www.redis.io/commands/sadd
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetLength(System.String)">
+             <summary>
+             获取集合里面的元素数量
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            http://www.redis.io/commands/scard
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineDiff(System.String,System.String)">
+             <summary>
+             返回一个集合与给定集合的差集的元素
+             </summary>
+             <param name="firstKey"></param>
+             <param name="secondKey"></param>
+             <remarks>
+            http://www.redis.io/commands/sdiff
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineDiff(System.String[])">
+             <summary>
+             返回一个集合与给定集合的差集的元素
+             </summary>
+             <param name="keys"></param>
+             <remarks>
+            http://www.redis.io/commands/sdiff
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineInter(System.String,System.String)">
+             <summary>
+             返回指定所有的集合的成员的交集
+             </summary>
+             <param name="firstKey"></param>
+             <param name="secondKey"></param>
+             <remarks>
+            http://www.redis.io/commands/sinter
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineInter(System.String[])">
+             <summary>
+             返回指定所有的集合的成员的交集
+             </summary>
+             <param name="keys"></param>
+             <remarks>
+            http://www.redis.io/commands/sinter
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineUnion(System.String,System.String)">
+             <summary>
+             返回给定的多个集合的并集中的所有成员
+             </summary>
+             <param name="firstKey"></param>
+             <param name="secondKey"></param>
+             <remarks>
+            http://www.redis.io/commands/sunion
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineUnion(System.String[])">
+             <summary>
+             返回给定的多个集合的并集中的所有成员
+             </summary>
+             <param name="keys"></param>
+             <remarks>
+            http://www.redis.io/commands/sunion
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineAndStoreDiff(System.String,System.String,System.String)">
+             <summary>
+             类似于 SDIFF, 不同之处在于该命令不返回结果集，而是将结果存放在destination集合中
+             </summary>
+            <param name="destinationKey"></param>
+            <param name="firstKey"></param>
+             <param name="secondKey"></param>
+            <remarks>
+            http://www.redis.io/commands/sdiffstore
+            </remarks>
+             <returns>结果集元素的个数</returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineAndStoreDiff(System.String,System.String[])">
+            <summary>
+            类似于 SDIFF, 不同之处在于该命令不返回结果集，而是将结果存放在destination集合中
+            </summary>
+            <param name="destinationKey"></param>
+            <param name="keys"></param>
+            <remarks>
+            http://www.redis.io/commands/sdiffstore
+            </remarks>
+             <returns>结果集元素的个数</returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineAndStoreInter(System.String,System.String,System.String)">
+            <summary>
+            与SINTER命令类似, 但是它并不是直接返回结果集,而是将结果保存在 destination集合中
+            </summary>
+            <param name="destinationKey"></param>
+            <param name="firstKey"></param>
+            <param name="secondKey"></param>
+            <remarks>
+            http://www.redis.io/commands/sinterstore
+            </remarks>
+             <returns>结果集元素的个数</returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineAndStoreInter(System.String,System.String[])">
+            <summary>
+            与SINTER命令类似, 但是它并不是直接返回结果集,而是将结果保存在 destination集合中
+            </summary>
+            <param name="destinationKey"></param>
+            <param name="keys"></param>
+            <remarks>
+            http://www.redis.io/commands/sinterstore
+            </remarks>
+             <returns>结果集元素的个数</returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineAndStoreUnion(System.String,System.String,System.String)">
+            <summary>
+            类似于SUNION命令,不同的是它并不返回结果集,而是将结果存储在destination集合中
+            </summary>
+            <param name="destinationKey"></param>
+            <param name="firstKey"></param>
+            <param name="secondKey"></param>
+            <remarks>
+            http://www.redis.io/commands/sunionstore
+            </remarks>
+             <returns>结果集元素的个数</returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetCombineAndStoreUnion(System.String,System.String[])">
+            <summary>
+            类似于SUNION命令,不同的是它并不返回结果集,而是将结果存储在destination集合中
+            </summary>
+            <param name="destinationKey"></param>
+            <param name="keys"></param>
+            <remarks>
+            http://www.redis.io/commands/sunionstore
+            </remarks>
+             <returns>结果集元素的个数</returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetMembers(System.String)">
+             <summary>
+             返回key集合所有的元素
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            http://www.redis.io/commands/smembers
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetContains``1(System.String,``0)">
+             <summary>
+             value 是否是存储的集合 key的成员
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            http://www.redis.io/commands/sismember
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetMove``1(System.String,System.String,``0)">
+             <summary>
+             将指定value 从source集合移动到destination集合中
+             </summary>
+             <param name="sourceKey"></param>
+             <param name="destinationKey"></param>
+             <param name="value"></param>
+             <remarks>
+            http://www.redis.io/commands/smove
+             </remarks>
+             <returns>成功移除,返回true;元素不是 source集合成员,无任何操作,返还false</returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetPop``1(System.String)">
+             <summary>
+             读取一个值
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <remarks>
+            http://www.redis.io/commands/spop
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetPop(System.String,System.Int64)">
+             <summary>
+             老版本csredis不支持取多个
+             </summary>
+             <param name="key"></param>
+             <param name="count"></param>
+             <remarks>
+            http://www.redis.io/commands/spop
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetRandomMember``1(System.String)">
+             <summary>
+             随机获取一个值
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <remarks>
+            http://www.redis.io/commands/srandmember
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetRandomMembers(System.String,System.Int64)">
+             <summary>
+             随机获取多个值
+             </summary>
+             <param name="key"></param>
+             <param name="count"></param>
+             <remarks>
+            http://www.redis.io/commands/srandmember
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetRemove``1(System.String,``0)">
+             <summary>
+             在key集合中移除指定的元素
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            http://www.redis.io/commands/srem
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISetsCommands.SetRemove(System.String,CtSharpRedis.CtSharpRedisValue[])">
+             <summary>
+             在key集合中移除指定的元素
+             </summary>
+             <param name="key"></param>
+             <param name="values"></param>
+             <remarks>
+            http://www.redis.io/commands/srem
+             </remarks>
+             <returns>返回移除个数</returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetAdd``1(System.String,``0,System.Double,CtSharpRedis.Enums.CtSharpWhen)">
+             <summary>
+             将所有指定成员添加到键为key有序集合（sorted set）里面
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <param name="value"></param>
+             <param name="score"></param>
+             <param name="when"></param>
+             <remarks>
+             https://redis.io/commands/sadd
+            when = CtSharpWhen.Always 更改的元素是新添加的成员，已经存在的成员更新分数
+             when = CtSharpWhen.Exists 仅仅更新存在的成员，不添加新成员
+             when = CtSharpWhen.NotExists 不更新存在的成员。只添加新成员
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetAdd(System.String,System.Collections.Generic.KeyValuePair{CtSharpRedis.CtSharpRedisValue,System.Double}[],CtSharpRedis.Enums.CtSharpWhen)">
+              <summary>
+              将所有指定成员添加到键为key有序集合（sorted set）里面
+              </summary>
+              <typeparam name="T"></typeparam>
+              <param name="key"></param>
+              <param name="score"></param>
+             <param name="scoreValues"></param>
+             <param name="when"></param>
+             <remarks>
+             https://redis.io/commands/sadd
+            when = CtSharpWhen.Always 更改的元素是新添加的成员，已经存在的成员更新分数
+             when = CtSharpWhen.Exists 仅仅更新存在的成员，不添加新成员
+             when = CtSharpWhen.NotExists 不更新存在的成员。只添加新成员
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetLength(System.String)">
+             <summary>
+             返回key的有序集元素个数
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/zcard
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetLength(System.String,System.Double,System.Double,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             返回有序集key中，score值在min和max之间(默认包括score值等于min或max)的成员
+             </summary>
+             <param name="key"></param>
+             <param name="minScore"></param>
+             <param name="maxScore"></param>
+             <param name="exclusive"></param>
+             <remarks>
+            https://redis.io/commands/zcount
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetIncrement``1(System.String,``0,System.Double)">
+             <summary>
+             为有序集key的成员member的score值加上增量increment
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <param name="incScore"></param>
+             <remarks>
+            https://redis.io/commands/zincrby
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetDecrement``1(System.String,``0,System.Double)">
+             <summary>
+             为有序集key的成员member的score值加上增量increment
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <param name="incScore"></param>
+             <remarks>
+            https://redis.io/commands/zincrby
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetCombineAndStoreInter(System.String,System.String,System.String,CtSharpRedis.Enums.CtSharpRedisAggregate)">
+             <summary>
+             计算给定的numkeys个有序集合的交集，并且把结果放到destination中
+             </summary>
+             <param name="destinationKey"></param>
+             <param name="firstKey"></param>
+             <param name="secondKey"></param>
+             <param name="aggregate"></param>
+             <remarks>
+            https://redis.io/commands/zinterstore
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetCombineAndStoreInter(System.String,System.String[],System.Double[],CtSharpRedis.Enums.CtSharpRedisAggregate)">
+             <summary>
+             计算给定的numkeys个有序集合的交集，并且把结果放到destination中
+             使用WEIGHTS选项，你可以为每个给定的有序集指定一个乘法因子，意思就是，每个给定有序集的所有成员的score值在传递给聚合函数之前都要先乘以该因子。如果WEIGHTS没有给定，默认就是1
+            默认使用的参数SUM，可以将所有集合中某个成员的score值之和作为结果集中该成员的score值。如果使用参数MIN或者MAX，结果集就是所有集合中元素最小或最大的元素。
+             </summary>
+             <param name="destinationKey"></param>
+             <param name="keys"></param>
+             <param name="weights"></param>
+             <param name="aggregate"></param>
+             <remarks>
+            https://redis.io/commands/zinterstore
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetCombineAndStoreUnion(System.String,System.String,System.String,CtSharpRedis.Enums.CtSharpRedisAggregate)">
+             <summary>
+             计算给定的numkeys个有序集合的并集，并且把结果放到destination中
+             </summary>
+             <param name="destinationKey"></param>
+             <param name="firstKey"></param>
+             <param name="secondKey"></param>
+             <param name="aggregate"></param>
+             <remarks>
+            https://redis.io/commands/zunionstore
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetCombineAndStoreUnion(System.String,System.String[],System.Double[],CtSharpRedis.Enums.CtSharpRedisAggregate)">
+             <summary>
+             计算给定的numkeys个有序集合的并集，并且把结果放到destination中
+             使用WEIGHTS选项，你可以为每个给定的有序集指定一个乘法因子，意思就是，每个给定有序集的所有成员的score值在传递给聚合函数之前都要先乘以该因子。如果WEIGHTS没有给定，默认就是1
+            默认使用的参数SUM，可以将所有集合中某个成员的score值之和作为结果集中该成员的score值。如果使用参数MIN或者MAX，结果集就是所有集合中元素最小或最大的元素。
+             </summary>
+             <param name="destinationKey"></param>
+             <param name="keys"></param>
+             <param name="weights"></param>
+             <param name="aggregate"></param>
+             <remarks>
+            https://redis.io/commands/zunionstore
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetLengthByValue``2(System.String,``0,``1,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             用于计算有序集合中指定成员之间的成员数量
+             </summary>
+             <param name="key"></param>
+             <param name="minValue"></param>
+             <param name="maxValue"></param>
+            <param name="exclusive"></param>
+            <remarks>
+            https://redis.io/commands/zlexcount
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByRankAsc(System.String,System.Int64,System.Int64)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从小到大排序
+             </summary>
+             <param name="key"></param>
+             <param name="start"></param>
+             <param name="stop"></param>
+             <remarks>
+            https://redis.io/commands/zrange
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByRankDesc(System.String,System.Int64,System.Int64)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从大到小排序
+             </summary>
+             <param name="key"></param>
+             <param name="start"></param>
+             <param name="stop"></param>
+             <remarks>
+            https://redis.io/commands/zrevrange
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByValueAsc``2(System.String,``0,``1,System.Int64,System.Int64,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从大到小排序(ZRANGEBYLEX)
+             </summary>
+             <param name="key"></param>
+             <param name="minMember"></param>
+             <param name="maxMember"></param>
+             <param name="offset"></param>
+             <param name="count"></param>
+             <param name="exclusive"></param>
+             <remarks>
+            https://redis.io/commands/zrangebylex
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByValueDesc``2(System.String,``0,``1,System.Int64,System.Int64,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从大到小排序(ZRANGEBYLEX)
+             </summary>
+             <param name="key"></param>
+             <param name="maxMember"></param>
+             <param name="minMember"></param>
+             <param name="offset"></param>
+             <param name="count"></param>
+             <param name="exclusive"></param>
+             <remarks>
+            https://redis.io/commands/zrevrangebylex
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByScoreAsc(System.String,System.Double,System.Double,System.Int64,System.Int64,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从大到小排序(ZRANGEBYLEX)
+             </summary>
+             <param name="key"></param>
+            <param name="maxScore"></param>
+            <param name="offset"></param>
+             <param name="count"></param>
+             <param name="exclusive"></param>
+            <param name="minScore"></param>
+            <remarks>
+            https://redis.io/commands/zrangebylex
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByScoreDesc(System.String,System.Double,System.Double,System.Int64,System.Int64,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从大到小排序(ZRANGEBYLEX)
+             </summary>
+             <param name="key"></param>
+            <param name="minScore"></param>
+            <param name="offset"></param>
+             <param name="count"></param>
+             <param name="exclusive"></param>
+            <param name="maxScore"></param>
+            <remarks>
+            https://redis.io/commands/zrevrangebylex
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByScoreWithScoresAsc(System.String,System.Double,System.Double,System.Int64,System.Int64,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从大到小排序(ZRANGEBYLEX)
+             </summary>
+             <param name="key"></param>
+            <param name="maxScore"></param>
+            <param name="offset"></param>
+             <param name="count"></param>
+             <param name="exclusive"></param>
+            <param name="minScore"></param>
+            <remarks>
+            https://redis.io/commands/zrangebylex
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByScoreWithScoresDesc(System.String,System.Double,System.Double,System.Int64,System.Int64,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从大到小排序(ZRANGEBYLEX)
+             </summary>
+             <param name="key"></param>
+            <param name="minScore"></param>
+            <param name="offset"></param>
+             <param name="count"></param>
+             <param name="exclusive"></param>
+            <param name="maxScore"></param>
+            <remarks>
+            https://redis.io/commands/zrevrangebylex
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByRankWithScoresAsc(System.String,System.Int64,System.Int64)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从小到大排序
+             </summary>
+             <param name="key"></param>
+             <param name="start"></param>
+             <param name="stop"></param>
+             <remarks>
+            https://redis.io/commands/zrange
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRangeByRankWithScoresDesc(System.String,System.Int64,System.Int64)">
+             <summary>
+             返回指定范围的元素,返回元素按分值从大到小排序
+             </summary>
+             <param name="key"></param>
+             <param name="start"></param>
+             <param name="stop"></param>
+             <remarks>
+            https://redis.io/commands/zrange
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRankAsc``1(System.String,``0)">
+             <summary>
+             返回有序集key中成员member的排名。其中有序集成员按score值递增(从小到大)顺序排列
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/zrank
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRankDesc``1(System.String,``0)">
+             <summary>
+             返回有序集key中成员member的排名，其中有序集成员按score值从大到小排列
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/zrevrank
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRemove``1(System.String,``0)">
+             <summary>
+             删除指定成员
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/zrem
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRemoveRangeByValue``2(System.String,``0,``1,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             删除名称按字典由低到高排序成员之间所有成员
+             </summary>
+             <param name="key"></param>
+             <param name="minMember"></param>
+             <param name="maxMember"></param>
+             <param name="exclusive"></param>
+             <remarks>
+            https://redis.io/commands/zremrangebylex
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRemoveRangeByRank(System.String,System.Int64,System.Int64)">
+             <summary>
+             移除有序集key中，指定排名(rank)区间内的所有成员。下标参数start和stop都以0为底，0处是分数最小的那个元素。这些索引也可是负数，表示位移从最高分处开始数。例如，-1是分数最高的元素，-2是分数第二高的，依次类推。
+             </summary>
+             <param name="key"></param>
+             <param name="start"></param>
+             <param name="stop"></param>
+             <remarks>
+            https://redis.io/commands/zremrangebyrank
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetRemoveRangeByScore(System.String,System.Double,System.Double,CtSharpRedis.Enums.Exclusive)">
+             <summary>
+             移除有序集key中，所有score值介于min和max之间
+             </summary>
+             <param name="key"></param>
+             <param name="minScore"></param>
+             <param name="maxScore"></param>
+             <param name="exclusive"></param>
+             <remarks>
+            https://redis.io/commands/zremrangebyscore
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.ISortedSetsCommands.SortedSetScore``1(System.String,``0)">
+             <summary>
+             返回有序集key中，成员member的score值,如果member元素不是有序集key的成员，或key不存在，返回nil
+             </summary>
+             <param name="key"></param>
+             <param name="member"></param>
+             <remarks>
+            https://redis.io/commands/zscore
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringAppend``1(System.String,``0)">
+             <summary>
+             如果 key 已经存在，并且值为字符串，那么这个命令会把 value 追加到原来值（value）的结尾。 如果 key 不存在，那么它将首先创建一个空字符串的key，再执行追加操作
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/append
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringBitCount(System.String,System.Int64,System.Int64)">
+             <summary>
+             统计字符串被设置为1的bit数
+             </summary>
+             <param name="key"></param>
+             <param name="startIndex"></param>
+             <param name="stopIndex"></param>
+             <remarks>
+            https://redis.io/commands/bitcount
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringBitOperation(System.String,System.String,System.String,CtSharpRedis.Enums.RedisBitwise)">
+             <summary>
+             对一个或多个保存二进制位的字符串 key 进行位元操作，并将结果保存到 destkey 上
+             </summary>
+             <param name="destinationKey"></param>
+             <param name="firstKey"></param>
+             <param name="secondKey"></param>
+             <param name="bitwise"></param>
+             <remarks>
+            https://redis.io/commands/bitop
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringBitOperation(System.String,System.String[],CtSharpRedis.Enums.RedisBitwise)">
+             <summary>
+             对一个或多个保存二进制位的字符串 key 进行位元操作，并将结果保存到 destkey 上
+             </summary>
+             <param name="destinationKey"></param>
+             <param name="keys"></param>
+             <param name="bitwise"></param>
+             <remarks>
+            https://redis.io/commands/bitop
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringBitPosition(System.String,System.Boolean,System.Int64,System.Int64)">
+             <summary>
+             返回字符串里面第一个被设置为1或者0的bit位
+             </summary>
+             <param name="key"></param>
+             <param name="bit"></param>
+             <param name="start"></param>
+             <param name="end"></param>
+             <remarks>
+            https://redis.io/commands/bitpos
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringDecrement(System.String,System.Int64)">
+             <summary>
+             将key对应的数字减decrement
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/decrby
+             </remarks>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringDecrement(System.String,System.Double)">
+             <summary>
+             将key对应的数字减decrement
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/incrbyfloat
+             </remarks>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringGet``1(System.String)">
+            <summary>
+            返回key的value
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <remarks>
+            https://redis.io/commands/get
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringGet(System.String[])">
+             <summary>
+            批量返回key的value
+             </summary>
+             <param name="keys"></param>
+             <remarks>
+            https://redis.io/commands/mget
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringGetBit(System.String,System.Int64)">
+             <summary>
+             返回key对应的string在offset处的bit值 当offset超出了字符串长度的时候，这个字符串就被假定为由0比特填充的连续空间。当key不存在的时候，它就认为是一个空字符串，所以offset总是超出范围，然后value也被认为是由0比特填充的连续空间。到内存分配
+             </summary>
+             <param name="key"></param>
+             <param name="offset"></param>
+             <remarks>
+            https://redis.io/commands/getbit
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringGetRange``1(System.String,System.Int64,System.Int64)">
+             <summary>
+             通过下标获取字符串内容
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <param name="start"></param>
+             <param name="end"></param>
+             <remarks>
+            https://redis.io/commands/getrange
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringGetSet``1(System.String,``0)">
+             <summary>
+             自动将key对应到value并且返回原来key对应的value。如果key存在但是对应的value不是字符串，就返回错误
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/getset
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringIncrement(System.String,System.Int64)">
+             <summary>
+             将key对应的数字加decrement
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/incrby
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringIncrement(System.String,System.Double)">
+             <summary>
+             将key对应的数字加decrement
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+             <remarks>
+            https://redis.io/commands/incrbyfloat
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringLength(System.String)">
+             <summary>
+             返回内容长度
+             </summary>
+             <param name="key"></param>
+             <remarks>
+            https://redis.io/commands/strlen
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringSet``1(System.String,``0,System.Nullable{System.TimeSpan},CtSharpRedis.Enums.CtSharpWhen)">
+             <summary>
+             将键key设定为指定的“字符串”值
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="key"></param>
+             <param name="value"></param>
+             <param name="expiry"></param>
+             <remarks>
+            https://redis.io/commands/set
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringSet(System.Collections.Generic.KeyValuePair{System.String,CtSharpRedis.CtSharpRedisValue}[],CtSharpRedis.Enums.CtSharpWhen)">
+             <summary>
+             批量将键key设定为指定的“字符串”值
+             </summary>
+             <param name="keyValues"></param>
+             <param name="when"></param>
+             <remarks>
+            https://redis.io/commands/mset
+             </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringSetBit(System.String,System.Int64,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="offset"></param>
+            <param name="bit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.IStringsCommands.StringSetRange``1(System.String,System.Int64,``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="offset"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.Utils.CollectionUtils.IsNullOrEmptyArrary``1(``0[])">
+            <summary>
+            是否空数组
+            </summary>
+            <param name="valueArrary"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.Utils.CollectionUtils.IsNullOrEmptyDictionary``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            是否空字典
+            </summary>
+            <param name="dictionary"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.Utils.DefaultRedisValueSerializeSettings.SerializeRedisValue(System.Object)">
+            <summary>
+            序列化
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CtSharpRedis.Utils.DefaultRedisValueSerializeSettings.DeserializeRedisValue``1(System.String)">
+            <summary>
+            反序列化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

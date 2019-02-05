@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.11.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CtSharpRedis.CsRedis\CtSharpRedis.CsRedis.csproj" />
+    <ProjectReference Include="..\CtSharpRedis.StackExchange.Redis\CtSharpRedis.StackExchange.Redis.csproj" />
+    <ProjectReference Include="..\CtSharpRedis\CtSharpRedis.csproj" />
+  </ItemGroup>
+
+</Project>
